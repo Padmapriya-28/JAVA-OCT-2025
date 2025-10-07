@@ -4,3 +4,56 @@
        return num1+num2; 
     }
 }
+
+**2.LC-_2119( A Number After a Double Reversal)**
+class Solution {
+    public boolean isSameAfterReversals(int num) {
+        return num==0 || num % 10 != 0;
+    }
+}
+
+3.**LC_2481(Minimum Cuts to Divide a Circle)**
+class Solution {
+    public int numberOfCuts(int n) {
+       if(n==1) return 0;
+       if(n%2==0) return n/2;
+       return n; 
+    }
+}
+
+4.** LC_1025(Divisor Game)**
+class Solution {
+    public boolean divisorGame(int n) {
+        return n%2==0;
+    }
+}
+ 
+5.**LC_292(Nim Game)**
+class Solution {
+    public boolean canWinNim(int n) {
+        return n%4!=0;
+    }
+}
+ 
+6.**LC_258(Add Digits)**
+class Solution {
+    public int addDigits(int num) {
+        if(num==0) return 0;
+        return 1+(num-1)%9;
+    }
+}
+ 
+7.**LC_1688(Count of Matches in Tournament)**
+class Solution {
+    public int numberOfMatches(int n) {
+        return n-1;
+    }
+}
+ 
+8.**LC_2413( Smallest Even Multiple)**
+class Solution {
+    public int smallestEvenMultiple(int n) {
+        return n%2==0 ? n:n*2;
+    }
+}
+ 
