@@ -1,1 +1,100 @@
+**1.LC_171(Excel Sheet Column Number )**
+class Solution {
+    public int titleToNumber(String columnTitle) {
+        int result = 0;
+        for (int i = 0; i < columnTitle.length(); i++) {
+            char c = columnTitle.charAt(i);
+            int value = c - 'A' + 1;
+            result = result * 26 + value;
+        }
+        return result;
+    }
+}
 
+2.** LC_168 (Excel Sheet Column Title)**
+class Solution {
+    public String convertToTitle(int columnNumber) {
+        StringBuilder sb = new StringBuilder();
+        while (columnNumber > 0) {
+            columnNumber--;   
+            int remainder = columnNumber % 26;
+            char c = (char) (remainder + 'A'); 
+            sb.append(c);
+            columnNumber /= 26;
+        }
+        return sb.reverse().toString();
+    }
+}
+
+3.**LC_405 (Convert a Number to Hexadecimal)**
+class Solution {
+    public String toHex(int num) {
+     if (num == 0) return "0";
+        char[] map = "0123456789abcdef".toCharArray();
+        StringBuilder sb = new StringBuilder();
+        long n = num & 0xFFFFFFFFL;
+        while (n != 0) {
+            int digit = (int)(n & 15); 
+            sb.append(map[digit]);
+            n >>= 4; 
+        }
+        return sb.reverse().toString();   
+    }
+}
+
+4.**LC_415 (Add Strings)**
+class Solution {
+    public String addStrings(String num1, String num2) {
+        StringBuilder result = new StringBuilder();
+        int i = num1.length() - 1;
+        int j = num2.length() - 1;
+        int carry = 0;
+        while (i >= 0 || j >= 0 || carry > 0) {
+            int digit1 = (i >= 0) ? num1.charAt(i) - '0' : 0;
+            int digit2 = (j >= 0) ? num2.charAt(j) - '0' : 0;
+            int sum = digit1 + digit2 + carry;
+
+            result.append(sum % 10);
+            carry = sum / 10;        
+            i--;
+            j--;
+        }
+        return result.reverse().toString();
+    }
+}
+5.**LC_2544. (Alternating Digit Sum)**
+class Solution {
+    public int alternateDigitSum(int n) {
+       String s = String.valueOf(n);
+        int sum = 0;
+        int sign = 1;        
+        for (int i = 0; i < s.length(); i++) {
+            int digit = s.charAt(i) - '0';
+            sum += digit * sign;
+            sign = -sign;
+        }    
+        return sum; 
+    }
+}
+
+6.**LC_3304(Find the K-th Character in String Game I)**
+class Solution {
+    public char kthCharacter(int k) {
+        int len = 1;
+        while (len < k) {
+            len *= 2;
+        }
+        return findChar(k, len, 'a');
+    }
+    private char findChar(int k, int len, char base) {
+        if (len == 1) {
+            return base;
+        }
+        int mid = len / 2;
+        if (k <= mid) {
+            return findChar(k, mid, base);
+        } else {
+            char result = findChar(k - mid, mid, (char)(base + 1));
+            return result; }
+    }
+}
